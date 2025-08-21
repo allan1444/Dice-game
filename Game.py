@@ -7,9 +7,6 @@ def roll():
     
     return roll
 
-value = roll()
-print(f"You rolled a {value}")
-
 while True:
     players = input("Enter the number of players (2-4): ")
     if players.isdigit():
@@ -28,7 +25,9 @@ while max(player_scores) < max_score:
     
     for player_index in range(players):
         print(f"Player {player_index + 1}'s turn\n")
+        print("Your total score is:", player_scores[player_index],"\n")
         current_score = 0
+        
         while True:
             should_roll = input("Would you like to roll the dice (y)?")
             if should_roll.lower() != 'y':
@@ -47,3 +46,8 @@ while max(player_scores) < max_score:
     
     player_scores[player_index] += current_score
     print("Your total score is now:", player_scores[player_index])
+    
+max_score = max(player_scores)
+winning_index = player_scores.index(max_score)
+print(f"Player {winning_index + 1} wins with a score of: {max_score}!")
+print("Final scores:", player_scores)
